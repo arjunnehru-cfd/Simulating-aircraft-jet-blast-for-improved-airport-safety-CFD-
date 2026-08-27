@@ -1,0 +1,2 @@
+# Simulating-aircraft-jet-blast-for-improved-airport-safety-CFD-
+RANS turbulence model assessment for airport jet blast hazard zone prediction. Python post-processing, Fluent journals, and digitised experimental data for a cylindrical jet above a ground plane at h/D = 0.5, Re = 1e5. Compares Spalart-Allmaras, SA with corner flow correction, and RSM against Davis &amp; Winarto (1980) and Maslov et al. (2001).
