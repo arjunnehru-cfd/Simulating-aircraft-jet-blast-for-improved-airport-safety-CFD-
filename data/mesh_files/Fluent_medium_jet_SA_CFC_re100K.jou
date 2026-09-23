@@ -1,0 +1,113 @@
+/file/read-case medium_mesh.cas.h5
+
+/define/operating-conditions/gravity yes 0 -9.8 0 
+
+
+/define/models/energy no
+
+/define/models/viscous spalart-allmaras yes
+/define/models/viscous corner-flow-correction yes
+
+/define/boundary-conditions 
+velocity-inlet 
+6
+no
+no 
+yes
+yes
+no
+1
+no
+0
+no
+no
+no
+yes
+5
+1
+
+
+/solve/monitors/residual convergence-criteria
+1e-6
+1e-6
+1e-6
+1e-6
+1e-6
+
+
+; 1. GROUND FORCE REPORT
+/solve/report-definitions/add ground-force force thread-names ground () force 0 1 0 per-zone? no q
+/solve/report-files/add ground-force-file report-defs ground-force () print yes file-name Medium_jet_SA_tv5_CFC_re100K_tv5_ground_force_data.csv q
+/solve/report-plots/add ground-force-plot report-defs ground-force () active yes q q
+
+
+; 2. MASS FLUX REPORT
+/solve/report-definitions/add mass-flux flux-massflow zone-names inlet downstream upstream () q
+/solve/report-files/add mass-flux-file report-defs mass-flux () print yes file-name Medium_jet_SA_tv5_CFC_re100K_tv5_mass_flux_data.csv q
+/solve/report-plots/add mass-flux-plot report-defs mass-flux () active yes q q
+
+
+
+/solve/initialize/hyb-initialization
+
+/solve/iterate 50000
+
+/plot/residuals-set/plot-to-file Medium_jet_SA_CFC_re100K_tv5_residuals_data.txt
+/plot/residuals yes yes yes yes yes
+
+
+
+; Export smooth line velocity data (XY Plot instead of ASCII)
+
+; Centerline (Along X-axis)
+/plot/plot
+yes
+"centerline_velocity.xy"
+yes
+no
+no
+velocity-magnitude
+yes
+1
+0
+0
+centerline
+()
+
+
+; Y-Profile at X=50 (Along Y-axis)
+/plot/plot
+yes
+"x50_y_profile_u.xy"
+yes
+no
+no
+velocity-magnitude
+yes
+0
+1
+0
+x50_y_profile
+()
+
+; Z-Profile at X=50 (Along Z-axis)
+/plot/plot
+yes
+"x50_z_profile_u.xy"
+yes
+no
+no
+velocity-magnitude
+yes
+0
+0
+1
+x50_z_profile
+()
+
+; Save case/data
+/file/write-case Medium_jet_SA_CFC_tv5_re100K.cas.h5
+/file/write-data Medium_jet_SA_CFC_tv5_re100K.dat.h5
+
+; Exit
+/exit ok

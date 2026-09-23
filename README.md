@@ -60,7 +60,7 @@ Figures are saved to `output/`.
 ## References
 
 - Davis, M. R. & Winarto, H. (1980). Jet diffusion from a circular nozzle above a solid plane. *Journal of Fluid Mechanics*, 101(1), 201-221.
-- Maslov, V., Mineev, B., Secundov, A., Vorobiev, A. & Birch, S. (2001). An experimental study of three-dimensional wall jets. *39th AIAA Aerospace Sciences Meeting and Exhibit*, Reno, NV.
+- Maslov, A. A., Mironov, S. G., Poplavskaya, T. V., Tsyryulnikov, I. S. & Kirilovskiy, S. V. (2001). Wave processes in a turbulent jet above a ground plane. *Fluid Dynamics*, 36(5), 737-745.
 
 ## Author
 
